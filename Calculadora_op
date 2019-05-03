@@ -1,0 +1,103 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package trabalho3;
+
+import java.math.*;
+public class Calculadora_op {
+    private double num1, num2, result;
+    public Calculadora_op(){
+        
+    }
+    
+    public void setNum1(double num){
+        this.num1 = num;
+    }
+    public void setNum2(double num){
+        this.num2 = num;
+    }
+    public void setResult(double res){
+        this.result = res;
+    }
+    public void rst(){
+        this.num1 = 0;
+        this.num2 = 0;
+        this.result = 0;
+    }
+    //verifica se num1 tem valor diferente de 0
+    public boolean num1OC(){
+        if(this.num1 != 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //idem
+    public boolean num2OC(){
+        if(this.num2 != 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //idem
+    public boolean resOC(){
+        if(this.result != 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //Calcula fatorial
+    public double fat(){
+        double result = 0;
+        double n = this.num1;
+        for(int i=0; i<this.num1; i++){
+            result = result + n;
+            n--;
+        }
+        return result;
+    }
+    // Eleva quadrado
+    public double x2(){
+        return Math.pow(this.num1, 2);
+    }
+    //Eleva cubo
+    public double x3(){
+        return Math.pow(this.num2, 3);
+    }
+    //Eleva num1 a num2
+    public double xy(){
+        return Math.pow(num1, num2);
+    }
+    //Tira raiz cubica
+    public double root3(){
+        return Math.cbrt(this.num1);
+    }
+    //Tira raiz quadrada
+    public double root2(){
+        return Math.sqrt(this.num1);
+    }
+    //Retorna porcentagem
+    public double percent(){
+        return this.num1/100;
+    }
+    //Soma
+    public double sum(){
+        return this.num1 + this.num2;
+    }
+    //Subtrai
+    public double minus(){
+        return this.num1 - this.num2;
+    }
+    //Divide
+    public double div(){
+        return this.num1/ this.num2;
+    }
+    //Multiplica
+    public double mult(){
+        return this.num1* this.num2;
+    }
+}
