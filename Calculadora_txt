@@ -1,0 +1,25 @@
+package trabalho3;
+
+import javax.swing.JTextField;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+
+public class Calculadora_txt extends JPanel{
+	
+	private JTextField field;
+	
+	public Calculadora_txt() {
+		
+		setLayout(new BorderLayout());
+		this.field = new JTextField();
+		field.setVisible(true);
+		add(field, BorderLayout.CENTER);
+	}
+	
+	public void setField(String s) {
+		this.field.setText(s);
+	}
+	public void rstField() {
+		this.field.setText(null);
+	}
+}
