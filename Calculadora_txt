@@ -13,7 +13,9 @@ public class Calculadora_txt extends JPanel{
 		setLayout(new BorderLayout());
 		this.field = new JTextField();
 		field.setVisible(true);
+		field.setEditable(false);
 		add(field, BorderLayout.CENTER);
+		
 	}
 	
 	public void setField(String s) {
