@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho3;
 
 import java.math.*;
 public class Calculadora_op {
-    private double num1, num2, result;
+	
+    private double num1;
+    private double num2;
+    
     public Calculadora_op(){
-        
+        this.num1 = 0;
+        this.num2 = 0;
     }
     
     public void setNum1(double num){
@@ -18,86 +17,61 @@ public class Calculadora_op {
     public void setNum2(double num){
         this.num2 = num;
     }
-    public void setResult(double res){
-        this.result = res;
-    }
+
     public void rst(){
         this.num1 = 0;
         this.num2 = 0;
-        this.result = 0;
     }
-    //verifica se num1 tem valor diferente de 0
-    public boolean num1OC(){
-        if(this.num1 != 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    //idem
-    public boolean num2OC(){
-        if(this.num2 != 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    //idem
-    public boolean resOC(){
-        if(this.result != 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    //Calcula fatorial
+
+      
+    //Operations
+    // Factorial
     public double fat(){
-        double result = 0;
-        double n = this.num1;
-        for(int i=0; i<this.num1; i++){
-            result = result + n;
-            n--;
+        double r = this.num1;
+        double n = r - 1;
+        while(n>0) {
+        	r = r * n;
         }
-        return result;
+        return r;
     }
-    // Eleva quadrado
+    // Power by 2
     public double x2(){
-        return Math.pow(this.num1, 2);
+        return Math.pow(this.num1, 2.0000000000);
     }
-    //Eleva cubo
+    // Power by 3
     public double x3(){
-        return Math.pow(this.num2, 3);
+        return Math.pow(this.num1, 3.0000000000);
     }
-    //Eleva num1 a num2
+    //num1 power num2
     public double xy(){
-        return Math.pow(num1, num2);
+        return Math.pow(this.num1, this.num2);
     }
-    //Tira raiz cubica
+    // Cubic rout
     public double root3(){
         return Math.cbrt(this.num1);
     }
-    //Tira raiz quadrada
+    // Squared rout
     public double root2(){
         return Math.sqrt(this.num1);
     }
-    //Retorna porcentagem
+    // Percentage
     public double percent(){
         return this.num1/100;
     }
-    //Soma
+    // Sum
     public double sum(){
         return this.num1 + this.num2;
     }
-    //Subtrai
+    // Subtract
     public double minus(){
         return this.num1 - this.num2;
     }
     //Divide
     public double div(){
-        return this.num1/ this.num2;
+        return this.num1 / this.num2;
     }
-    //Multiplica
+    // Multiplies
     public double mult(){
-        return this.num1* this.num2;
+        return this.num1 * this.num2;
     }
 }
