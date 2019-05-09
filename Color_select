@@ -13,8 +13,7 @@ public class Color_select extends JFrame{
 	private PaintPanel paintpanel;
 	private JPanel panelBtn;
 	private JColorChooser ch;
-	private JTextField field;
-	Color c;
+	private Color c;
 	
 	public Color_select() {
 		
@@ -27,23 +26,20 @@ public class Color_select extends JFrame{
 		this.paintpanel = new PaintPanel();
 		this.ch = new JColorChooser(paintpanel.getForeground());
 		
-		this.field = new JTextField("Cor: ");
-		field.setEditable(false);
 		paintpanel.setBackground(Color.WHITE);
 		panelBtn.setLayout(new BorderLayout());		
 		panelBtn.add(btnOK, BorderLayout.NORTH);
 		panelBtn.add(btnCancel, BorderLayout.WEST);
 		panelBtn.add(btnCor, BorderLayout.EAST);
-		panelBtn.add(ch, BorderLayout.CENTER);
-		panelBtn.add(field, BorderLayout.SOUTH);
-		
+		panelBtn.add(ch, BorderLayout.CENTER);		
 		
 		btnHandler h1 = new btnHandler();
 		btnOK.addActionListener(h1);
 		btnCancel.addActionListener(h1);
+		btnCor.addActionListener(h1);
 		
-		//chHandler h2 = new chHandler();
-		//ch.addChangeListener(h2);
+		chHandler h2 = new chHandler();
+		ch.getSelectionModel().addChangeListener(h2);
 		
 		add(paintpanel);
 		add(panelBtn);
@@ -55,11 +51,12 @@ public class Color_select extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == btnOK) {
-				paintpanel.setBackground(c);
+				paintpanel.setColor(c);
 			} else if(event.getSource() == btnCancel) {
-				
+				paintpanel.setColor(Color.BLACK);
+				paintpanel.setBackground(Color.WHITE);
 			} else if(event.getSource() == btnCor) {
-				field.setText("Cor: " + c.toString());
+				paintpanel.setBackground(c);
 			}
 		}
 		
@@ -68,11 +65,10 @@ public class Color_select extends JFrame{
 
 		@Override
 		public void stateChanged(ChangeEvent event) {
-			// TODO Auto-generated method stub
-			//c = ch.getColor();
-			paintpanel.setForeground(event.getSource());
+			c = ch.getColor();
 		}
 		
 	}
 
 }
+
