@@ -1,0 +1,78 @@
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+public class Color_select extends JFrame{
+
+	private JButton btnOK, btnCancel, btnCor;
+	private PaintPanel paintpanel;
+	private JPanel panelBtn;
+	private JColorChooser ch;
+	private JTextField field;
+	Color c;
+	
+	public Color_select() {
+		
+		this.setLayout(new GridLayout(2, 1));
+		
+		this.btnOK = new JButton("OK");
+		this.btnCancel = new JButton("Cancel");
+		this.btnCor = new JButton("Cor");		
+		this.panelBtn = new JPanel();
+		this.paintpanel = new PaintPanel();
+		this.ch = new JColorChooser(paintpanel.getForeground());
+		
+		this.field = new JTextField("Cor: ");
+		field.setEditable(false);
+		paintpanel.setBackground(Color.WHITE);
+		panelBtn.setLayout(new BorderLayout());		
+		panelBtn.add(btnOK, BorderLayout.NORTH);
+		panelBtn.add(btnCancel, BorderLayout.WEST);
+		panelBtn.add(btnCor, BorderLayout.EAST);
+		panelBtn.add(ch, BorderLayout.CENTER);
+		panelBtn.add(field, BorderLayout.SOUTH);
+		
+		
+		btnHandler h1 = new btnHandler();
+		btnOK.addActionListener(h1);
+		btnCancel.addActionListener(h1);
+		
+		//chHandler h2 = new chHandler();
+		//ch.addChangeListener(h2);
+		
+		add(paintpanel);
+		add(panelBtn);
+	}
+	
+
+	private class btnHandler implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			if(event.getSource() == btnOK) {
+				paintpanel.setBackground(c);
+			} else if(event.getSource() == btnCancel) {
+				
+			} else if(event.getSource() == btnCor) {
+				field.setText("Cor: " + c.toString());
+			}
+		}
+		
+	}
+	private class chHandler implements ChangeListener{
+
+		@Override
+		public void stateChanged(ChangeEvent event) {
+			// TODO Auto-generated method stub
+			//c = ch.getColor();
+			paintpanel.setForeground(event.getSource());
+		}
+		
+	}
+
+}
