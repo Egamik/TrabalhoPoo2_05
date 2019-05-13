@@ -1,4 +1,2 @@
-Entregar dia 10/05
-
-
-Falta dar fix no fatorial
+CenterPanel cria o centro do painel completo;
+ faz o resto do layout
