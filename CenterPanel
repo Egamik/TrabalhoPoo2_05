@@ -49,11 +49,4 @@ public class CenterPanel extends JPanel{
 		vgroup.addComponent(txtArea3);
 		layout.setVerticalGroup(vgroup);
 	}
-	/*public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.add(new CenterPanel());
-		frame.setVisible(true);
-		frame.setSize(720, 480);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}*/
 }
