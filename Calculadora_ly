@@ -1,0 +1,195 @@
+package trabalho3;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.math.*;
+
+
+public class Calculadora_ly extends JPanel{
+	
+    private JButton btneX, btnFat,btnPerc, btnCRT, btnSQRT, btnC, btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnEq, btnSum, btnDiv, btnMinus, btnComma, btnMult, btnPow2, btnPow3, btnXpowY, btnPi;
+    private JButton btnPr, btnPl;
+    private Calculadora_txt field;
+    private String str = "";
+    
+    
+    public Calculadora_ly(Calculadora_txt field){
+ 
+    	this.field = field;
+    	setLayout(new GridLayout(5, 6));
+        
+        //Cria botoes
+        //Btn de operacao
+        btnPr = new JButton("(");
+        btnPl = new JButton(")");
+        btneX = new JButton("e^x");
+        btnC = new JButton("C");
+        btnPerc = new JButton("% x");
+        btnFat = new JButton("!x");
+        btnSQRT = new JButton("SQRT");
+        btnCRT = new JButton("CRT");
+        btnC = new JButton("C");
+        btnComma = new JButton(".");
+        btnEq = new JButton("=");
+        btnSum = new JButton("+");
+        btnMinus = new JButton("-");
+        btnMult = new JButton("*");
+        btnDiv = new JButton("/");
+        btnPow2 = new JButton("x pow 2");
+        btnPow3 = new JButton("x pow 3");
+        btnXpowY = new JButton("x pow y");
+        btnPi = new JButton("PI");
+        
+        //btn numericos
+        btn0 = new JButton("0");
+        btn1 = new JButton("1");
+        btn2 = new JButton("2");
+        btn3 = new JButton("3");
+        btn4 = new JButton("4");
+        btn5 = new JButton("5");
+        btn6 = new JButton("6");
+        btn7 = new JButton("7");
+        btn8 = new JButton("8");
+        btn9 = new JButton("9");
+        
+        
+        //Adiciona btn na ordem da grid
+        add(btnPerc);
+        add(btnFat);
+        add(btnSQRT);
+        add(btn7);
+        add(btn8);
+        add(btn9);
+        add(btnCRT);
+        add(btnSum);
+        add(btneX);
+        add(btn4);
+        add(btn5);
+        add(btn6);
+        add(btnEq);
+        add(btnMinus);
+        add(btnMult);
+        add(btn1);
+        add(btn2);
+        add(btn3);
+        add(btnC);
+        add(btnDiv);
+        add(btnPi);
+        add(new JPanel());
+        add(btn0);
+        add(new JPanel());
+        add(btnPow3);
+        add(btnXpowY);
+        add(btnPow2);
+        add(btnComma);
+        add(btnPr);
+        add(btnPl);
+        
+        //Adiciona handlers dos btn
+        btnListener handler = new btnListener();
+        btn0.addActionListener(handler);
+        btn1.addActionListener(handler);
+        btn2.addActionListener(handler);
+        btn3.addActionListener(handler);
+        btn4.addActionListener(handler);
+        btn5.addActionListener(handler);
+        btn6.addActionListener(handler);
+        btn7.addActionListener(handler);
+        btn8.addActionListener(handler);
+        btn9.addActionListener(handler);
+        btnPr.addActionListener(handler);
+        btnPl.addActionListener(handler);
+        btnPerc.addActionListener(handler);
+        btnFat.addActionListener(handler);
+        btnSQRT.addActionListener(handler);
+        btnCRT.addActionListener(handler);
+        btnComma.addActionListener(handler);
+        btnEq.addActionListener(handler);
+        btnC.addActionListener(handler);
+        btnSum.addActionListener(handler);
+        btnMinus.addActionListener(handler);
+        btnMult.addActionListener(handler);
+        btnDiv.addActionListener(handler);
+        btnPow2.addActionListener(handler);
+        btnPow3.addActionListener(handler);
+        btnXpowY.addActionListener(handler);
+        btnPi.addActionListener(handler);
+        btneX.addActionListener(handler);
+
+        
+    }
+    
+    private class btnListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            
+            if(event.getSource()== btn1){
+                str += "1";
+            } else if(event.getSource()== btn2){
+                str += "2";
+            } else if(event.getSource()== btn3){
+            	str += "3";
+            } else if(event.getSource()== btn4){
+            	str += "4";
+            } else if(event.getSource()== btn5){
+            	str += "5";
+            } else if(event.getSource()== btn6){
+            	str += "6";
+            }else if(event.getSource()== btn7){
+            	str += "7";
+            } else if(event.getSource()== btn8){
+            	str += "8";
+            } else if(event.getSource()== btn9){
+            	str += "9";
+            } else if(event.getSource()== btn0){
+            	str += "0";
+            } else if(event.getSource() == btnPr) {
+            	str += "(";
+            } else if(event.getSource() == btnPl) {
+            	str += ")";
+            } else if(event.getSource() == btnComma){
+            	str += ".";
+            } else if(event.getSource() == btnPi) {
+            	str += "P";
+            } else if(event.getSource()== btnSum){
+            	str += "+";
+            } else if(event.getSource() == btnDiv){
+            	str += "/";
+            } else if(event.getSource() == btnMult){
+            	str += "*";
+            } else if(event.getSource() == btnMinus){
+            	str += "-";
+            } else if(event.getSource() == btnFat){
+            	str += "!";
+            } else if(event.getSource() == btnSQRT){
+            	str += "sqrt";
+            } else if(event.getSource() == btnCRT){
+            	str += "cbrt";
+            } else if(event.getSource() == btnPerc){
+            	str += "%";
+            } else if(event.getSource() == btnPow2) {
+            	str += "^2";
+            } else if(event.getSource() == btnPow3) {
+            	str += "^3";
+            } else if(event.getSource() == btnXpowY) {
+            	str += "^";
+            } else if(event.getSource() == btneX) {
+            	str += "e^";
+            } else if(event.getSource()==btnC){
+                str = "";
+            } else if(event.getSource() == btnEq){
+            	//Seta numeros na calculadora operacional           	
+            	String r = Double.toString(Calc_op.compute(str));
+            	field.setField(r);
+                
+            }
+            if(event.getSource() != btnEq) {    	
+            	field.setField(str);
+            }
+
+        }
+        
+    }
+}
