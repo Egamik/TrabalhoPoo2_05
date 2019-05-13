@@ -1,2 +1,2 @@
-ColorChooser lida com o JColorChooser;
+ColorSelect lida com o layout;
 PaintPanel lida com o painel para pintar;
