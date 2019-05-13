@@ -1,3 +1,1 @@
-Calculadora está no branch calculadora                                                                                                     
-printer está no branch printer                                                                                                             
-Paint program está no branch paint panel
+A classe "Calculadora_ly" contem somente as especificações de layout                                                                        A classe "Calc_op" contem a calculadora em si, que cria tokens da string obtida no layout para efetuar as contas                            A classe "Calculadora_txt" contem apenas um JTextField com metodos para setar a string exibida
