@@ -1,0 +1,59 @@
+import javax.swing.*;
+
+public class CenterPanel extends JPanel{
+
+	private JTextArea txtArea1, txtArea2, txtArea3;
+	private JCheckBox chBox1, chBox2, chBox3;
+	private JRadioButton rBtn1, rBtn2, rBtn3;
+	
+	public CenterPanel() {
+		
+		GroupLayout layout = new GroupLayout(this);
+		this.setLayout(layout);
+		
+		txtArea1 = new JTextArea();
+		txtArea2 = new JTextArea();
+		txtArea3 = new JTextArea();
+		chBox1 = new JCheckBox("Image");
+		chBox2 = new JCheckBox("Text");
+		chBox3 = new JCheckBox("Code");
+		rBtn1 = new JRadioButton("Selection");
+		rBtn2 = new JRadioButton("All");
+		rBtn3 = new JRadioButton("Applet");
+		
+		GroupLayout.SequentialGroup hgroup = layout.createSequentialGroup();
+		hgroup.addComponent(txtArea1);
+		hgroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addComponent(chBox1)
+				.addComponent(chBox2)
+				.addComponent(chBox3));
+		hgroup.addComponent(txtArea2);
+		hgroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addComponent(rBtn1)
+				.addComponent(rBtn2)
+				.addComponent(rBtn3));
+		hgroup.addComponent(txtArea3);
+		layout.setHorizontalGroup(hgroup);
+		
+		GroupLayout.ParallelGroup vgroup = layout.createParallelGroup();
+		vgroup.addComponent(txtArea1);
+		vgroup.addGroup(layout.createSequentialGroup()
+				.addComponent(chBox1)
+				.addComponent(chBox2)
+				.addComponent(chBox3));
+		vgroup.addComponent(txtArea2);
+		vgroup.addGroup(layout.createSequentialGroup()
+				.addComponent(rBtn1)
+				.addComponent(rBtn2)
+				.addComponent(rBtn3));
+		vgroup.addComponent(txtArea3);
+		layout.setVerticalGroup(vgroup);
+	}
+	/*public static void main(String[] args) {
+		JFrame frame = new JFrame();
+		frame.add(new CenterPanel());
+		frame.setVisible(true);
+		frame.setSize(720, 480);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}*/
+}
