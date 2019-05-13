@@ -1,3 +1,3 @@
-Calculadora está no branch calculadora/n
-printer está no branch printer/n
+Calculadora está no branch calculadora                                                                                                     
+printer está no branch printer                                                                                                             
 Paint program está no branch paint panel
