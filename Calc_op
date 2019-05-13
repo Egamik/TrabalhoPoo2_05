@@ -46,9 +46,9 @@ public class Calc_op {
 	            double parseTerm() {
 	                double x = parsePow();
 	                for (; ; ) {
-	                    if (eat('×')) { //multiplication
+	                    if (eat('*')) { //multiplication
 	                        x *= parsePow();
-	                    } else if (eat('÷')) { //division
+	                    } else if (eat('/')) { //division
 	                        x /= parsePow();
 	                    } else {
 	                        return x;
