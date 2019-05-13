@@ -1,7 +1,6 @@
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,40 +8,77 @@ import java.awt.event.ActionListener;
 
 public class Color_select extends JFrame{
 
-	private JButton btnOK, btnCancel, btnCor;
+	int a = 0, s;
+	private JButton btnOK, btnCancel, btnCor, btnClear, btnSize0, btnSize1;
 	private PaintPanel paintpanel;
-	private JPanel panelBtn;
+	private JPanel panel0, panel1;
 	private JColorChooser ch;
 	private Color c;
 	
 	public Color_select() {
 		
-		this.setLayout(new GridLayout(2, 1));
-		
 		this.btnOK = new JButton("OK");
 		this.btnCancel = new JButton("Cancel");
-		this.btnCor = new JButton("Cor");		
-		this.panelBtn = new JPanel();
+		this.btnCor = new JButton("Cor");
+		this.btnClear = new JButton("Clear");
+		this.btnSize0 = new JButton("Size-");
+		this.btnSize1 = new JButton("Size+");
+		this.ch = new JColorChooser();
+		this.panel0 = new JPanel();
 		this.paintpanel = new PaintPanel();
-		this.ch = new JColorChooser(paintpanel.getForeground());
+		this.panel1 = new JPanel();
+
+		panel1.setLayout(new GridLayout(2,1));
+		panel1.add(paintpanel);
+		panel1.add(ch);
 		
-		paintpanel.setBackground(Color.WHITE);
-		panelBtn.setLayout(new BorderLayout());		
-		panelBtn.add(btnOK, BorderLayout.NORTH);
-		panelBtn.add(btnCancel, BorderLayout.WEST);
-		panelBtn.add(btnCor, BorderLayout.EAST);
-		panelBtn.add(ch, BorderLayout.CENTER);		
+		GroupLayout layout = new GroupLayout(panel0);
+		panel0.setLayout(layout);
+		//Create gaps
+		layout.setAutoCreateGaps(true);
+		layout.setAutoCreateContainerGaps(true);
+		//Link button sizes
+		layout.linkSize(SwingConstants.HORIZONTAL, btnOK, btnCancel, btnCor, btnClear);
 		
+		//Horizontal axis
+		GroupLayout.SequentialGroup hgroup = layout.createSequentialGroup();		
+		hgroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addComponent(btnOK)
+				.addComponent(btnCancel)
+				.addComponent(btnCor));
+		hgroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+				.addGroup(layout.createSequentialGroup()
+						.addComponent(btnSize0)
+						.addComponent(btnSize1)
+						.addComponent(btnClear))
+				.addComponent(panel1));
+		layout.setHorizontalGroup(hgroup);
+		
+		//Vertical axis
+		GroupLayout.ParallelGroup vgroup = layout.createParallelGroup(GroupLayout.Alignment.CENTER);
+		vgroup.addGroup(layout.createSequentialGroup()
+				.addComponent(btnOK)
+				.addComponent(btnCancel)
+				.addComponent(btnCor));
+		vgroup.addGroup(layout.createSequentialGroup()
+				.addGroup(layout.createParallelGroup()
+						.addComponent(btnSize0)
+						.addComponent(btnSize1)
+						.addComponent(btnClear))
+				.addComponent(panel1));
+		layout.setVerticalGroup(vgroup);
+		
+		paintpanel.setBackground(Color.WHITE);		
 		btnHandler h1 = new btnHandler();
 		btnOK.addActionListener(h1);
 		btnCancel.addActionListener(h1);
 		btnCor.addActionListener(h1);
+		btnClear.addActionListener(h1);
 		
 		chHandler h2 = new chHandler();
 		ch.getSelectionModel().addChangeListener(h2);
 		
-		add(paintpanel);
-		add(panelBtn);
+		add(panel0);
 	}
 	
 
@@ -51,18 +87,23 @@ public class Color_select extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == btnOK) {
-				paintpanel.setColor(c);
+				paintpanel.setBG(c);
 			} else if(event.getSource() == btnCancel) {
+				paintpanel.setBG(Color.WHITE);
 				paintpanel.setColor(Color.BLACK);
-				paintpanel.setBackground(Color.WHITE);
 			} else if(event.getSource() == btnCor) {
-				paintpanel.setBackground(c);
+				paintpanel.setColor(c);
+			} else if(event.getSource() == btnClear) {
+				paintpanel.clear();
+			} else if(event.getSource() == btnSize0) {
+				paintpanel.minusSize();
+			} else if(event.getSource() == btnSize1) {
+				paintpanel.plusSize();
 			}
 		}
 		
 	}
 	private class chHandler implements ChangeListener{
-
 		@Override
 		public void stateChanged(ChangeEvent event) {
 			c = ch.getColor();
@@ -71,4 +112,3 @@ public class Color_select extends JFrame{
 	}
 
 }
-
