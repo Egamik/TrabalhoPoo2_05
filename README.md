@@ -1,2 +1,2 @@
 CenterPanel cria o centro do painel completo;
- faz o resto do layout
+FullPanel faz o resto do layout;
