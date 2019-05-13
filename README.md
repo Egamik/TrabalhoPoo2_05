@@ -1,4 +1,3 @@
-Entregar dia 10/05
-
-
-Falta dar fix no fatorial
+Calculadora está no branch calculadora
+printer está no branch printer
+Paint program está no branch paint panel
