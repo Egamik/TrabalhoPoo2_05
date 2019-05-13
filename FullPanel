@@ -1,0 +1,68 @@
+import javax.swing.*;
+public class FullPanel extends JPanel{
+	
+	private JLabel lbl1, lbl2;
+	private CenterPanel cpanel;
+	private JButton btnOK, btnCancel, btnStp, btnHelp;
+	private JCheckBox chBox;
+	private JComboBox combo;
+	
+	public FullPanel() {
+		
+		this.lbl1 = new JLabel("Printer: MyPrinter");
+		this.lbl2 = new JLabel("Print Quality: ");
+		this.cpanel = new CenterPanel();
+		this.btnOK = new JButton("OK");
+		this.btnCancel = new JButton("Cancel");
+		this.btnStp = new JButton("Setup");
+		this.btnHelp = new JButton("Help");
+		this.chBox = new JCheckBox("Print to file");
+		String[] s = {"Low", "Medium", "High"};
+		this.combo = new JComboBox(s);
+		
+		GroupLayout layout = new GroupLayout(this);
+		this.setLayout(layout);
+		layout.setAutoCreateContainerGaps(true);
+		layout.setAutoCreateGaps(true);
+		layout.linkSize(SwingConstants.HORIZONTAL, btnOK, btnCancel, btnStp, btnHelp);
+		GroupLayout.SequentialGroup hgroup = layout.createSequentialGroup();
+		hgroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addComponent(lbl1)
+				.addComponent(cpanel)
+				.addGroup(layout.createSequentialGroup()
+						.addComponent(lbl2)
+						.addComponent(combo)
+						.addComponent(chBox)));
+		hgroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+				.addComponent(btnOK)
+				.addComponent(btnCancel)
+				.addComponent(btnStp)
+				.addComponent(btnHelp));
+		layout.setHorizontalGroup(hgroup);
+		
+		GroupLayout.ParallelGroup vgroup = layout.createParallelGroup();
+		vgroup.addGroup(layout.createSequentialGroup()
+				.addComponent(lbl1)
+				.addComponent(cpanel)
+				.addGroup(layout.createParallelGroup()
+						.addComponent(lbl2)
+						.addComponent(combo)
+						.addComponent(chBox)));
+		vgroup.addGroup(layout.createSequentialGroup()
+				.addComponent(btnOK)
+				.addComponent(btnCancel)
+				.addComponent(btnStp)
+				.addComponent(btnHelp));
+		layout.setVerticalGroup(vgroup);
+	}
+	
+	public static void main(String[] args) {
+		FullPanel panel = new FullPanel();
+		JFrame frame = new JFrame();
+		frame.add(panel);
+		frame.setVisible(true);
+		frame.setSize(360, 200);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+}
