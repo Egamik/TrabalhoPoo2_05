@@ -1,4 +1,2 @@
-Entregar dia 10/05
-
-
-Falta dar fix no fatorial
+ColorChooser lida com o JColorChooser;
+PaintPanel lida com o painel para pintar;
